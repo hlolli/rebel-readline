@@ -86,8 +86,7 @@
 (declare current-ns)
 
 (defn default-prompt-fn []
-  (format "%s=> "
-          (or (current-ns) "clj")))
+  "panaeolus> ")
 
 (defmethod tools/-prompt ::clojure [service]
   (default-prompt-fn))
