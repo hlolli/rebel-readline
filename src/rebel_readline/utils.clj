@@ -42,9 +42,9 @@
             (when-let [var (resolve var-sym)]
               var))))))
 
-(defn load-slow-deps! []
-  (.start
-   (Thread.
-    #(do
-       (require 'cljfmt.core)
-       (require 'compliment.core)))))
+#_(defn load-slow-deps! []
+    (.start
+     (Thread.
+      #(do
+         (require 'cljfmt.core)
+         (require 'compliment.core)))))
