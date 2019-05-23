@@ -72,7 +72,6 @@
        :prompt (fn []))))"
   [line-reader & body]
   `(ensure-terminal
-    (rebel-readline.utils/load-slow-deps!)
     (binding [rebel-readline.jline-api/*line-reader* ~line-reader]
       ~@body)))
 
@@ -84,26 +83,26 @@
 
 (defn read-line-opts
   "Like read-line, but allows overriding of the LineReader prompt, buffer, and mask parameters.
-   
-   :prompt 
+
+   :prompt
      Allows overriding with a cusom prompt
    :buffer
      The default value presented to the user to edit, may be null.
-   :mask 
-     Should be set to a single character used by jline to bit-mask.  
+   :mask
+     Should be set to a single character used by jline to bit-mask.
      Characters will not be echoed if they mask to 0
      Might do crazy stuff with rebel-readline, use with caution.
      defaults to nil (no mask)
    :command-executed
-     sentinal value to be returned when a repl command is executed, otherwise a 
+     sentinal value to be returned when a repl command is executed, otherwise a
      blank string will be returned when a repl command is executed.
   "
   [ & {prompt :prompt
        mask :mask
-       buffer :buffer 
+       buffer :buffer
        command-executed :command-executed
        :or {prompt nil buffer nil mask nil command-executed ""}}]
-  
+
   (let [redirect-output? (:redirect-output @api/*line-reader*)
         save-out (volatile! *out*)
         redirect-print-writer (api/safe-terminal-writer api/*line-reader*)]
