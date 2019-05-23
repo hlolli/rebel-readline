@@ -3,4 +3,4 @@
         org.jline/jline-terminal {:mvn/version "3.5.1"}
         org.jline/jline-terminal-jansi {:mvn/version "3.5.1"}
         cljfmt {:mvn/version "0.6.4"} ;; depends on tools reader
-        compliment {:mvn/version "0.3.9"}}}
+        compliment {:mvn/version "0.3.8"}}}
