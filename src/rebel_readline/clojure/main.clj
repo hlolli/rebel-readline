@@ -82,7 +82,8 @@
         (apply
          clj-repl
          (-> {:print syntax-highlight-prn
-              :read (create-repl-read)}
+              :read (create-repl-read)
+              :init (fn [] (in-ns 'panaeolus.all))}
              (merge opts {:prompt (fn [])})
              seq
              flatten))))))
